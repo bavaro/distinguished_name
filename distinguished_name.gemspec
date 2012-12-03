@@ -8,5 +8,5 @@ Gem::Specification.new do |s|
   s.authors     = ["Kestrel"]
   s.email       = ''
   s.files       = ["lib/distinguished_name.rb"]
-  s.homepage    = 'https://github.com/chazelton331/DistinguishedName'
+  s.homepage    = 'https://github.com/kestrelei/distinguished_name'
 end
