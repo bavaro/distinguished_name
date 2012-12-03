@@ -1,4 +1,4 @@
-require 'distinguished_name'
+require File.join(File.dirname(__FILE__), '..', 'distinguished_name')
 
 class DistinguishedName::Canonicalize
 

@@ -1,13 +1,21 @@
+# -*- encoding: utf-8 -*-
 
-Gem::Specification.new do |s|
-  s.name        = 'distinguished_name'
-  s.version     = Distinguished::VERSION
-  s.platform    = Gem::Platform::RUBY
-  s.date        = '2012-12-03'
-  s.summary     = "A String Representation of Distinguished Names"
-  s.description = "This is a gem for interacting with the string representation of distinguished names, per the RFC-1779 (http://www.ietf.org/rfc/rfc1779.txt)"
-  s.authors     = ["Kestrel"]
-  s.email       = ''
-  s.files       = ["lib/distinguished_name.rb"]
-  s.homepage    = 'https://github.com/kestrelei/distinguished_name'
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+
+require 'distinguished_name/version'
+
+Gem::Specification.new do |gem|
+  gem.name          = "distinguished_name"
+  gem.version       = DistinguishedName::VERSION
+  gem.authors       = ["Midpoint Data Layer"]
+  gem.email         = ["info@kestrelei.com"]
+  gem.summary       = %q{Methods for interacting with distinguished name strings}
+  gem.description   = %q{This is a gem for interacting with the string representation of distinguished names, per the RFC-1779 (http://www.ietf.org/rfc/rfc1779.txt)}
+  gem.homepage      = ""
+
+  gem.files         = `git ls-files`.split($/)
+  gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
+  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+  gem.require_paths = ["lib"]
 end

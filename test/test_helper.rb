@@ -1,2 +1,2 @@
 require 'test/unit'
-require 'distinguished_name'
+require File.join(File.dirname(__FILE__), '..', 'lib', 'distinguished_name')
