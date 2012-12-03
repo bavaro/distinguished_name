@@ -1,2 +1,2 @@
 require 'test/unit'
-require File.join(File.dirname(__FILE__), '..', 'lib', 'distinguished_name')
+require_relative "../lib/distinguished_name"
