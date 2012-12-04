@@ -9,7 +9,6 @@ class TransformTest < Test::Unit::TestCase
     super
   end
 
-=begin
   def test_ldapify_doesnt_modify_ldap_dn
     assert_equal(@ldap_dn, DistinguishedName::Transform.ldapify(@ldap_dn))
   end
@@ -17,7 +16,6 @@ class TransformTest < Test::Unit::TestCase
   def test_slashify_doesnt_modify_slash_dn
     assert_equal(@slash_dn, DistinguishedName::Transform.slashify(@slash_dn))
   end
-=end
 
   def test_slashify_accepts_a_comma_separated_version_and_returns_a_slash_separated_version_of_the_dn
     assert_equal(@slash_dn, DistinguishedName::Transform.slashify(@ldap_dn))
