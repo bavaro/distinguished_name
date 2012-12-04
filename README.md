@@ -17,3 +17,6 @@ DistinguishedName::Transform.slashify("/C=US/O=NFL/OU=Patriots/OU=people/CN=Welk
 DistinguishedName::Transform.ldapify("CN=Welker.Wes.83,OU=people,OU=Patriots,O=NFL,C=US")
 # => "CN=Welker.Wes.83,OU=people,OU=Patriots,O=NFL,C=US"
 ```
+
+* It will raise an OpenSSL::X509::NameError if you give it an invalid Distinguished Name
+
