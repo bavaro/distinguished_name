@@ -5,6 +5,7 @@ class DistinguishedName::Canonicalize
   class << self
 
     def reverse(dn, order=['CN','OU','O','C'])
+      STDERR.puts "Warning!  DistinguishedName::Canonicalize is deprecated.  Use DistinguishedName::Transform instead."
       @dn = dn
       @order = []
       order.each {|o| @order << o + '='}
