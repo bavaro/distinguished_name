@@ -52,11 +52,18 @@ private
     def parse_dn(dn_string)
       begin 
         OpenSSL::X509::Name.parse(dn_string)
-      rescue Java::JavaLang::NullPointerException #MRI can throw a TypeError
+      rescue parse_exception
         raise OpenSSL::X509::NameError
       end
     end
 
-  end
+    def parse_exception
+      if defined?(JRUBY_VERSION) 
+        JRUBY_VERSION >= "1.7.1" ? TypeError : Java::JavaLang::NullPointerException  
+      else
+        TypeError
+      end
+    end
 
+  end
 end
