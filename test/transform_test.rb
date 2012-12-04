@@ -4,8 +4,8 @@ class TransformTest < Test::Unit::TestCase
 
 
   def setup
-    @ldap_dn  = "CN=Ward.Hines.86,OU=people,OU=Steelers,O=NFL,C=US"
-    @slash_dn = "/C=US/O=NFL/OU=Steelers/OU=people/CN=Ward.Hines.86"
+    @ldap_dn  = "CN=Welker.Wes.83,OU=people,OU=Patriots,O=NFL,C=US"
+    @slash_dn = "/C=US/O=NFL/OU=Patriots/OU=people/CN=Welker.Wes.83"
     super
   end
 
