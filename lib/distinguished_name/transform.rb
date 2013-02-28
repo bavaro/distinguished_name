@@ -27,6 +27,10 @@ class DistinguishedName::Transform
       end
     end
 
+    def little_endian_comma_separated(dn_string)
+      little_endian(parse_dn(dn_string), "", ",")
+    end
+
 private 
 
     def big_endian(x509_parsed_dn, prefix, separator)

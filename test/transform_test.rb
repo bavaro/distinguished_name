@@ -25,6 +25,15 @@ class TransformTest < Test::Unit::TestCase
     assert_equal(@ldap_dn, DistinguishedName::Transform.ldapify(@slash_dn))
   end
 
+  def test_little_endian_comma_separated_accepts_a_slash_separated_version_and_returns_a_comma_separated_version_of_the_dn
+    big_endian_comma  = "C=US,O=NFL,OU=Patriots,OU=people,CN=Welker.Wes.83"
+    big_endian_slash = "/C=US/O=NFL/OU=Patriots/OU=people/CN=Welker.Wes.83"
+    [big_endian_comma, big_endian_slash].each do |big_endian_dn|
+      assert_equal("CN=Welker.Wes.83,OU=people,OU=Patriots,O=NFL,C=US", 
+                   DistinguishedName::Transform.little_endian_comma_separated(big_endian_dn))
+    end
+  end
+
   def test_slashify_method_fails_gracefully_with_invalid_dn_string_that_has_no_equal_sign
     bad_dn = 'foo'
     assert_raise OpenSSL::X509::NameError do
