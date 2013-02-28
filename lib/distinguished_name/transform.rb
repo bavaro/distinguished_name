@@ -27,11 +27,27 @@ class DistinguishedName::Transform
       end
     end
 
+    # TODO: big_endian() and little_endian() are named poorly
+    #       we didn't take into account DNs of the format
+    #       "/CN=Welker.Wes.83/OU=people/OU=Patriots/O=NFL/C=US"
+    #       and 
+    #       "C=US,O=NFL,OU=Patriots,OU=people,CN=Welker.Wes.83"
     def little_endian_comma_separated(dn_string)
-      little_endian(parse_dn(dn_string), "", ",")
+      x509_parsed_dn = parse_dn(dn_string)
+      prefix = ''
+      separator = ','
+      if cn_is_first?(x509_parsed_dn)
+        big_endian(x509_parsed_dn, prefix, separator)
+      else
+        little_endian(x509_parsed_dn, prefix, separator)
+      end
     end
 
 private 
+
+    def cn_is_first?(x509_parsed_dn)
+      x509_parsed_dn.to_a.first.first.downcase == "cn"
+    end
 
     def big_endian(x509_parsed_dn, prefix, separator)
       x509_parsed_dn.to_a.map {|piece| "#{prefix}#{piece[0]}=#{piece[1]}" }.join(separator)
